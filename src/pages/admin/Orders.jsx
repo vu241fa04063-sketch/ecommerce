@@ -21,8 +21,8 @@ export default function AdminOrders() {
     setLoading(true);
     try {
       const params = filterStatus ? { status: filterStatus } : {};
-      const { data } = await getAllOrders(params);
-      setOrders(data.data);
+      const res = await getAllOrders(params);
+      setOrders(res.data.data || []);
     } catch (err) {
       toast.error('Failed to load orders');
     } finally {

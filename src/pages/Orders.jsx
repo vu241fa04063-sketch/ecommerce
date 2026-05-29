@@ -17,8 +17,8 @@ export default function Orders() {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const { data } = await getMyOrders();
-        setOrders(data.data);
+        const res = await getMyOrders();
+        setOrders(res.data.data || []);
       } catch (err) {
         console.error(err);
       } finally {

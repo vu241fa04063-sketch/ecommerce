@@ -21,12 +21,14 @@ export default function Home() {
       if (search) params.search = search;
       if (category !== 'All') params.category = category;
 
-      const { data } = await getProducts(params);
-      setProducts(data.data);
-      setTotalPages(data.pages);
-      setTotal(data.total);
+      const res = await getProducts(params);
+      const data = res.data;
+      setProducts(data.data || []);
+      setTotalPages(data.pages || 1);
+      setTotal(data.total || 0);
     } catch (err) {
-      console.error(err);
+      console.error('Failed to fetch products:', err);
+      setProducts([]);
     } finally {
       setLoading(false);
     }
