@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const BASE_URL = 'https://ecommerce-backend-o1i9.onrender.com/api';
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'https://ecommerce-backend-o1i9.onrender.com/api',
+  baseURL: BASE_URL,
   headers: { 'Content-Type': 'application/json' },
 });
 
